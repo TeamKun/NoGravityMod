@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.util.ObfuscationUtil;
 
 import java.lang.reflect.Field;
 
@@ -27,7 +28,12 @@ public abstract class MixinPlayerEntity {
     @Inject(method = "travel", at = @At(value = "HEAD"))
     public void travel(Vector3d travelVector, CallbackInfo info) throws NoSuchFieldException, IllegalAccessException {
         PlayerEntity instance = (PlayerEntity)(Object)this;
-        Field isJumpingField = LivingEntity.class.getDeclaredField("isJumping");
+        Field isJumpingField;
+        try {
+            isJumpingField = LivingEntity.class.getDeclaredField("field_70703_bu");
+        } catch (NoSuchFieldException ignored) {
+            isJumpingField = LivingEntity.class.getDeclaredField("isJumping");
+        }
         isJumpingField.setAccessible(true);
         boolean isJumping = isJumpingField.getBoolean(instance);
         if (instance.isSwimming() && !instance.isPassenger()) {

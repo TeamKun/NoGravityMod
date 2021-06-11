@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "net.kunmc.lab.nogravitymod.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "nogravitymod.refmap.json",
+  "refmap": "no-gravity-mod.refmap.json",
   "mixins": [
     "MixinClientPlayerEntity",
     "MixinEntity",
