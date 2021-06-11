@@ -5,11 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "nogravitymod.refmap.json",
   "mixins": [
-    "MixinPlayerEntity",
-    "MixinEntity"
+    "MixinClientPlayerEntity",
+    "MixinEntity",
+    "MixinLivingEntity",
+    "MixinPlayerEntity"
   ],
   "client": [
-    "MixinClientPlayerEntity"
   ],
   "injectors": {
     "defaultRequire": 1
