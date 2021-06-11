@@ -14,7 +14,6 @@ public class MixinLivingEntity {
         if (!((Object)this instanceof PlayerEntity)) {
             return;
         }
-        PlayerEntity instance = (PlayerEntity)(Object)this;
         info.setReturnValue(0);
     }
 }
